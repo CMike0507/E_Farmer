@@ -123,7 +123,7 @@
         document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
-        config.devicePixelRatio = 1; // 降低移動設備分辨率
+          config.devicePixelRatio = window.devicePixelRatio || 1; // 添加對 Retina 顯示屏的支持
       } else {
         function resizeCanvas() {
           var containerWidth = window.innerWidth;
