@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | WebPageTest</title>
+    <title> 青商電農 </title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
@@ -48,7 +48,7 @@
         #unity-fullscreen-button {
             width: 50px; /* 調整按鈕大小 */
             height: 50px;
-            background: url('TemplateData/unity-logo-light.png') no-repeat center center; /* 自訂圖示 */
+            background: url('TemplateData/fullscreen-button.png') no-repeat center center; /* 自訂圖示 */
             background-size: contain; /* 圖示自動縮放以填滿按鈕 */
             border: none; /* 移除預設邊框 */
             cursor: pointer; /* 滑鼠移過時顯示為點擊狀態 */
@@ -71,12 +71,13 @@
         </div>
         <div id="unity-warning"></div>
         <div id="unity-footer">
-            <div id="unity-webgl-logo"></div>
+          
             <div id="unity-fullscreen-button"></div>
             <div id="unity-build-title">WebPageTest</div>
         </div>
     </div>
     <script>
+        /*    JavaScript 邏輯 【核心變數】  抓取HTML中關鍵DOM元素  */
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -84,6 +85,7 @@
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
 
+        /*      顯示警告 / 錯誤訊息     */
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
           warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
@@ -102,6 +104,7 @@
         updateBannerVisibility();
       }
 
+        /*      Unity WebGL 的加載      */
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/E_Farmer.loader.js";
       var config = {
@@ -116,7 +119,8 @@
           devicePixelRatio: window.devicePixelRatio || 1 // 添加對 Retina 顯示屏的支持
       };
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) { /* 非 【PC】 裝置 *//* 正則表達去檢測非PC */
+         
         var meta = document.createElement('meta');
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
@@ -124,7 +128,8 @@
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
           config.devicePixelRatio = window.devicePixelRatio || 1; // 添加對 Retina 顯示屏的支持
-      } else {
+        } else {  /*  【PC】 裝置 */
+          
         function resizeCanvas() {
           var containerWidth = window.innerWidth;
           var containerHeight = window.innerHeight;
