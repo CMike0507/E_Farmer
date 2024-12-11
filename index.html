@@ -67,6 +67,7 @@
             <div id="unity-logo"></div>
             <div id="unity-progress-bar-empty">
                 <div id="unity-progress-bar-full"></div>
+                <button id="Btn_PageNet">開啟新分頁</button>
             </div>
         </div>
         <div id="unity-warning"></div>
@@ -151,15 +152,13 @@
         resizeCanvas(); // 初始化時調用
         }
 
-        function OpenURL(url) {
+        function OpenNewTab(url) {
             // 確保是直接由用戶操作觸發
             var newWindow = window.open(url, '_blank', 'noopener,noreferrer');
             if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
                 alert("無法開啟新分頁，請檢查您的瀏覽器設置。");
             }
         }
-        document.getElementById("new-tab-button").addEventListener("click", () => {
-            OpenURL(url);
 
       var script = document.createElement("script");
       script.src = loaderUrl;
