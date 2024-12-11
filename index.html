@@ -123,7 +123,7 @@
          
         var meta = document.createElement('meta');
         meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes, shrink-to-fit=yes';
+            meta.content = 'width=device-width, initial-scale=1.0, user-scalable=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
@@ -151,12 +151,15 @@
         resizeCanvas(); // 初始化時調用
         }
 
-        function OpenNewTab(url) {
-            var newWindow = window.open(url, '_blank');
+        function OpenURL(url) {
+            // 確保是直接由用戶操作觸發
+            var newWindow = window.open(url, '_blank', 'noopener,noreferrer');
             if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-                alert("Safari 阻止了新分頁的跳轉，請啟用彈出式窗口功能！");
+                alert("無法開啟新分頁，請檢查您的瀏覽器設置。");
             }
         }
+        document.getElementById("new-tab-button").addEventListener("click", () => {
+            OpenURL(url);
 
       var script = document.createElement("script");
       script.src = loaderUrl;
