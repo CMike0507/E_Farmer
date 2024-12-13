@@ -155,11 +155,13 @@
         function OpenNewTab(url)
         {
             // 確保是直接由用戶操作觸發
-            var newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-            if (!newWindow) {
+            var newWindow = window.open(url, '_blank');
+            if (!newWindow)
+            {
                 alert("沒有開啟網頁");
             }
-            else if (typeof newWindow.closed == 'undefined') {
+            else if (typeof newWindow.closed == 'undefined')
+            {
                 alert("無法開啟新分頁，請檢查您的瀏覽器設置。");
             }
             else if (newWindow.closed)
@@ -167,6 +169,10 @@
                 alert("新視窗關閉。");
             }
         }
+
+        document.getElementById("Btn_PageNet").addEventListener("click", () => {
+            OpenNewTab("https://www.danongnet.com/");
+        });
 
       var script = document.createElement("script");
       script.src = loaderUrl;
